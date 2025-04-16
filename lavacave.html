@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>kMin - Lava Cave</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
+
+    body {
+      background-color: #ffeeee;
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4a3b3b;
+      color: white;
+      padding: 20px;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    h1 {
+      margin: 20px;
+      font-size: 28px;
+      color: #333;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(60px, 1fr));
+      gap: 15px;
+      justify-content: center;
+      padding: 0 10px;
+      margin-bottom: 30px;
+    }
+
+    .tile {
+      width: 100%;
+      aspect-ratio: 1/1;
+      max-width: 64px;
+      background-image: url('img/null.png');
+      background-size: contain;
+      background-repeat: no-repeat;
+      background-position: center;
+      position: relative;
+      text-decoration: none;
+      display: inline-block;
+      transition: transform 0.2s ease, filter 0.2s ease;
+      margin: 0 auto;
+    }
+
+    .tile span {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -70%);
+      font-size: 22px;
+      color: black;
+      font-family: 'DynaPuff', cursive;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .tile:hover {
+      filter: brightness(1.1);
+      transform: scale(1.05) rotate(-1deg);
+      cursor: pointer;
+    }
+
+    .tile:active {
+      transform: scale(0.95) rotate(1deg);
+      filter: brightness(0.95);
+    }
+
+    footer {
+      background-color: #4a3b3b;
+      color: white;
+      font-size: 14px;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    LAVA CAVE
+  </header>
+  <h1>50 MAP</h1>
+  <div class="grid">
+  </div>
+  <footer>
+    <em>This project is inspired by and based on resources from <a href="https://kadaver.site/" target="_blank" style="color: #fff; text-decoration: underline;">kadaver.site</a>. All rights belong to the original creator.</em>
+  </footer>
+
+  <script>
+    const grid = document.querySelector('.grid');
+    for (let i = 1; i <= 50; i++) {
+      const a = document.createElement('a');
+      a.className = 'tile';
+      a.href = `map/${i}.html`;
+
+      const span = document.createElement('span');
+      span.textContent = i;
+      a.appendChild(span);
+
+      grid.appendChild(a);
+    }
+  </script>
+</body>
+</html>
