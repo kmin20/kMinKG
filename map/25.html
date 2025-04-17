@@ -1,10 +1,9 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Map 25 - Lava Cave</title>
+  <title>Map 1 - Lava Cave</title>
   <style>
     @import url('https://fonts.googleapis.com/css2?family=DynaPuff:wght@400..700&display=swap');
     body {
@@ -17,9 +16,20 @@
     header {
       background-color: #4a3b3b;
       color: white;
-      padding: 20px;
-      font-size: 5vw;
+      padding: 10px 20px;
+      font-size: 20px;
       font-weight: bold;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .header-title {
+      flex-grow: 1;
+      text-align: center;
+    }
+    .home-button {
+      width: 40px;
+      height: auto;
     }
     .map-row {
       display: flex;
@@ -75,15 +85,6 @@
       filter: brightness(1.1);
       transform: scale(1.05);
     }
-    #map-nav {
-      margin: 10px 0;
-      font-size: 16px;
-    }
-    #map-nav a {
-      color: #333;
-      text-decoration: underline;
-      margin: 0 20px;
-    }
     footer {
       background-color: #4a3b3b;
       color: white;
@@ -91,14 +92,20 @@
       padding: 10px;
     }
     @media (max-width: 768px) {
-      header { font-size: 6vw; }
+      header { font-size: 5vw; }
       .map-tile span { font-size: 16px; }
     }
   </style>
 </head>
 <body>
   <header>
-    MAP 25 - LAVA CAVE
+    <div></div>
+    <div class="header-title">MAP 25 - LAVA CAVE</div>
+    <div>
+      <a href="../lavacave.html">
+        <img src="https://kmin20.site/img/gohome.png" alt="Home" class="home-button">
+      </a>
+    </div>
   </header>
 
   <!-- MAP -->
@@ -110,56 +117,27 @@
     <img src="img/25_5.png" alt="Map 25-5" class="map-image">
   </div>
 
-  <!-- Prev / Next -->
-  <div id="map-nav"></div>
-
-  <!-- LIST MAP -->
+  <!-- Danh sách map gần -->
   <h2>Next Maps</h2>
   <div class="map-list" id="map-list"></div>
 
   <footer>
-    <em>Created by kMin. Inspired by Kadaver</br>
-      <a href="https://kmin20.site" target="_blank" style="color: #fff; text-decoration: underline;">kMin20.Site</a>.</em>
+    <em>Created by kMin, inspired Kadaver</br>
+      <a href="https://kmin20.site" target="_blank" style="color: #fff;">kMin20.site</a></em>
   </footer>
 
   <script>
     const currentMap = 25;
     const totalMaps = 50;
-
     const mapList = document.getElementById('map-list');
-    const mapNav = document.getElementById('map-nav');
-
-    const prevMap = currentMap - 1 >= 1 ? currentMap - 1 : null;
-    const nextMap = currentMap + 1 <= totalMaps ? currentMap + 1 : null;
-
-    if (prevMap || nextMap) {
-      const navWrapper = document.createElement('div');
-      if (prevMap) {
-        const prev = document.createElement('a');
-        prev.href = `${prevMap}.html`;
-        prev.textContent = `<< Prev (${prevMap})`;
-        navWrapper.appendChild(prev);
-      }
-      if (nextMap) {
-        const next = document.createElement('a');
-        next.href = `${nextMap}.html`;
-        next.textContent = `Next (${nextMap}) >>`;
-        navWrapper.appendChild(next);
-      }
-      mapNav.appendChild(navWrapper);
-    }
-
     const range = 2;
     for (let i = currentMap - range; i <= currentMap + range; i++) {
       if (i < 1 || i > totalMaps || i === currentMap) continue;
-
       const a = document.createElement('a');
       a.className = 'map-tile';
       a.href = `${i}.html`;
-
       const span = document.createElement('span');
       span.textContent = i;
-
       a.appendChild(span);
       mapList.appendChild(a);
     }
