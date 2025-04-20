@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Dimensional Tunnel Weekly</title>
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #003366;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+    .menu-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      background-color: #123a7a;
+      padding: 10px 0;
+      gap: 15px;
+    }
+    .menu-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.2s ease, margin-top 0.2s ease;
+    }
+    .menu-icon:hover {
+      transform: scale(1.1);
+    }
+    .menu-icon.active {
+      transform: translateY(10px);
+      border-radius: 8px;
+      box-shadow:
+        0 0 0 3px #f3d14f,
+        0 0 10px #f3d14f,
+        0 0 20px #f3d14faa,
+        0 0 30px #f3d14f66;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    table {
+      border-collapse: collapse;
+      width: max-content;
+      min-width: 1000px;
+      table-layout: fixed;
+    }
+    th, td {
+      border: 1px solid #2266aa;
+      text-align: center;
+      vertical-align: middle;
+      color: white;
+      min-width: 100px;
+    }
+    th {
+      background: url('img/bg_titletable.jpg') no-repeat center center;
+      background-size: cover;
+      padding: 15px 5px;
+      font-family: 'DynaPuff', 'Arial Black', sans-serif;
+      color: #31286b;
+    }
+    .day-label {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    td {
+      height: 80px;
+      background-color: #123a7a;
+    }
+    .icon {
+      width: 50px;
+      height: 50px;
+      object-fit: contain;
+      margin: auto;
+      display: block;
+    }
+    .sidebar {
+      background-color: #0e2a57;
+      position: sticky;
+      left: 0;
+      z-index: 2;
+    }
+    th:first-child {
+      position: sticky;
+      left: 0;
+      z-index: 3;
+      background: #0e2a57;
+    }
+  </style>
+</head>
+<body>
+
+<!-- MENU -->
+<div class="menu-container" id="menuBar">
+  <img src="img/mithril_icon.png" class="menu-icon active">
+  <img src="img/mk_icon.png" class="menu-icon">
+  <img src="img/mk_icon.png" class="menu-icon">
+  <img src="img/mk_icon.png" class="menu-icon">
+  <img src="img/mk_icon.png" class="menu-icon">
+</div>
+
+<!-- BẢNG -->
+<div class="table-wrapper">
+  <table>
+    
+<tr>
+  <th></th>
+  <th><div class="day-label">Season 1</div></th>
+  <th><div class="day-label">Season 2</div></th>
+  <th><div class="day-label">Season 3</div></th>
+  <th><div class="day-label">Season 4</div></th>
+  <th><div class="day-label">Season 5</div></th>
+  <th><div class="day-label">Season 6</div></th>
+  <th><div class="day-label">Season 7</div></th>
+  <th><div class="day-label">Season 8</div></th>
+  <th><div class="day-label">Season 9</div></th>
+  <th><div class="day-label">Season 10</div></th>
+  <th><div class="day-label">Season 11</div></th>
+  <th><div class="day-label">Season 12</div></th>
+  <th><div class="day-label">Season 13</div></th>
+  <th><div class="day-label">Season 14</div></th>
+  <th><div class="day-label">Season 15</div></th>
+  <th><div class="day-label">Season 16</div></th>
+  <th><div class="day-label">Season 17</div></th>
+  <th><div class="day-label">Season 18</div></th>
+  <th><div class="day-label">Season 19</div></th>
+  <th><div class="day-label">Season 20</div></th>
+  <th><div class="day-label">Season 21</div></th>
+  <th><div class="day-label">Season 22</div></th>
+  <th><div class="day-label">Season 23</div></th>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/crownoforacle.png" class="icon" title="Crown of Oracle"></td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x250</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/mastertalentbooks.png" class="icon" title="Master Talent Books"></td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x250</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/freepickunitexpbook.png" class="icon" title="Free-Pick Unit EXP Book"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/freepickheroes.png" class="icon" title="Free-Pick Heroes"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/daniel.png" class="icon" title="Daniel"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/deluxedragonsoulstone.png" class="icon" title="Deluxe Dragon Soul Stone"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/dragonsoulstone.png" class="icon" title="Dragon Soul Stone"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/freepickdragonrune.png" class="icon" title="Free-Pick Dragon Rune"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/stone.png" class="icon" title="Stone"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/wood.png" class="icon" title="Wood"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/bloodoftitan.png" class="icon" title="Blood of Titan"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/elementalvial.png" class="icon" title="Elemental Vial"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/forgehammer.png" class="icon" title="Forge Hammer"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/steel.png" class="icon" title="Steel"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/tier2magicbook.png" class="icon" title="Tier 2 Magic Book"></td>
+  <td>---</td>
+  <td>---</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/perfectsummoningspell.png" class="icon" title="Perfect Summoning Spell"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/advancedsummoningspell.png" class="icon" title="Advanced Summoning Spell"></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/fortunepotion.png" class="icon" title="Fortune Potion"></td>
+  <td></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/strengtheningpotion.png" class="icon" title="Strengthening Potion"></td>
+  <td></td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x3</td>
+  <td>x3</td>
+  <td>x6</td>
+  <td>x6</td>
+  <td>x6</td>
+  <td>x6</td>
+  <td>x12</td>
+  <td>x12</td>
+  <td>x29</td>
+  <td>x29</td>
+  <td>x29</td>
+  <td>x29</td>
+  <td>x58</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x143</td>
+  <td></td>
+  <td></td>
+  <td></td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/lightreagent.png" class="icon" title="Light Reagent"></td>
+  <td></td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/tier3magicbook.png" class="icon" title="Tier 3 Magic Book"></td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/tier4magicbook.png" class="icon" title="Tier 4 Magic Book"></td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar"><img src="img/mithril_shop/tier5magicbook.png" class="icon" title="Tier 5 Magic Book"></td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+  </table>
+</div>
+
+<script>
+  const menuIcons = document.querySelectorAll('.menu-icon');
+  menuIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      menuIcons.forEach(i => i.classList.remove('active'));
+      icon.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
