@@ -112,6 +112,11 @@
     th {
       background-color: #0e2a57;
     }
+	.table-wrapper.dragging {
+	  cursor: grabbing;
+	  cursor: -webkit-grabbing;
+	}
+
     .sidebar {
       background-color: #1a3b6d;
       font-weight: bold;
@@ -914,6 +919,37 @@
       menuIcons.forEach(i => i.classList.remove('active'));
       icon.classList.add('active');
     });
+  });
+</script>
+<script>
+  const tableWrapper = document.querySelector('.table-wrapper');
+  let isDragging = false;
+  let startX;
+  let scrollLeft;
+
+  tableWrapper.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    tableWrapper.classList.add('dragging');
+    startX = e.pageX - tableWrapper.offsetLeft;
+    scrollLeft = tableWrapper.scrollLeft;
+  });
+
+  tableWrapper.addEventListener('mouseleave', () => {
+    isDragging = false;
+    tableWrapper.classList.remove('dragging');
+  });
+
+  tableWrapper.addEventListener('mouseup', () => {
+    isDragging = false;
+    tableWrapper.classList.remove('dragging');
+  });
+
+  tableWrapper.addEventListener('mousemove', (e) => {
+    if (!isDragging) return;
+    e.preventDefault();
+    const x = e.pageX - tableWrapper.offsetLeft;
+    const walk = (x - startX) * 1.5; // tốc độ kéo
+    tableWrapper.scrollLeft = scrollLeft - walk;
   });
 </script>
 
