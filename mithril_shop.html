@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Lịch Sự Kiện</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=DynaPuff&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'DynaPuff', sans-serif;
+      background: #003366;
+      margin: 0;
+      padding: 0;
+      color: white;
+    }
+	
+	.table-wrapper {
+	  overflow-x: auto;
+	  max-width: 100%;
+	}
+
+	table {
+	  border-collapse: collapse;
+	  width: max-content;
+	  table-layout: auto;
+	}
+
+	th, td {
+	  border: 1px solid #ffe066;
+	  text-align: center;
+	  vertical-align: middle;
+	  padding: 6px;
+	  color: white;
+	  min-width: 80px;
+	}
+
+	th:first-child,
+	td.sidebar {
+	  position: sticky;
+	  left: 0;
+	  z-index: 2;
+	}
+
+	th:first-child {
+	  background-color: #0e2a57;
+	  z-index: 3;
+	}
+	
+	table tr:nth-child(even) {
+	  background-color: #3b77bc;
+	}
+
+
+
+	.sidebar {
+	  background-image: url('img/bg_titletable.jpg');
+	  background-size: cover;
+	  background-repeat: no-repeat;
+	  background-position: center;
+	  font-weight: bold;
+	  color: #0e2a57;
+	  background-color: #1a3b6d; /* fallback nếu ảnh lỗi */
+	}
+
+
+
+
+    .menu-container {
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      background-color: #123a7a;
+      padding: 10px 0;
+      gap: 15px;
+    }
+    .menu-icon {
+      width: 60px;
+      height: 60px;
+      object-fit: contain;
+      cursor: pointer;
+      transition: transform 0.2s ease, margin-top 0.2s ease;
+    }
+    .menu-icon:hover {
+      transform: scale(1.1);
+    }
+    .menu-icon.active {
+      transform: translateY(10px);
+      border-radius: 8px;
+      box-shadow:
+        0 0 0 3px #f3d14f,
+        0 0 10px #f3d14f,
+        0 0 20px #f3d14faa,
+        0 0 30px #f3d14f66;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+      max-width: 100%;
+    }
+    table {
+      border-collapse: collapse;
+      width: max-content;
+      table-layout: auto;
+    }
+    th, td {
+      border: 1px solid #ffe066;
+      text-align: center;
+      vertical-align: middle;
+      padding: 6px;
+      color: white;
+      min-width: 80px;
+    }
+    th {
+      background-color: #0e2a57;
+    }
+    .sidebar {
+      background-color: #1a3b6d;
+      font-weight: bold;
+    }
+    .icon {
+
+      object-fit: contain;
+    }
+    @media screen and (max-width: 768px) {
+      .icon {
+
+      }
+      td, th {
+        font-size: 12px;
+        padding: 4px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- MENU -->
+<div class="menu-container" id="menuBar">
+  <img src="img/mithril_icon.png" class="menu-icon active">
+  <img src="img/mk_icon.png" class="menu-icon">
+  <img src="img/mk_icon.png" class="menu-icon">
+  <img src="img/mk_icon.png" class="menu-icon">
+  <img src="img/mk_icon.png" class="menu-icon">
+</div>
+
+<!-- BẢNG -->
+<div class="table-wrapper">
+  <table>
+    <tr>
+  <th>Season</th>
+  <th><img src="img/mithril_shop/crownoforacle.png" class="icon" title="Crown of Oracle"></th>
+  <th><img src="img/mithril_shop/mastertalentbooks.png" class="icon" title="Master Talent Books"></th>
+  <th><img src="img/mithril_shop/freepickunitexpbook.png" class="icon" title="Free-Pick Unit EXP Book"></th>
+  <th><img src="img/mithril_shop/freepickheroes.png" class="icon" title="Free-Pick Heroes"></th>
+  <th><img src="img/mithril_shop/daniel.png" class="icon" title="Daniel"></th>
+  <th><img src="img/mithril_shop/deluxedragonsoulstone.png" class="icon" title="Deluxe Dragon Soul Stone"></th>
+  <th><img src="img/mithril_shop/dragonsoulstone.png" class="icon" title="Dragon Soul Stone"></th>
+  <th><img src="img/mithril_shop/freepickdragonrune.png" class="icon" title="Free-Pick Dragon Rune"></th>
+  <th><img src="img/mithril_shop/stone.png" class="icon" title="Stone"></th>
+  <th><img src="img/mithril_shop/wood.png" class="icon" title="Wood"></th>
+  <th><img src="img/mithril_shop/bloodoftitan.png" class="icon" title="Blood of Titan"></th>
+  <th><img src="img/mithril_shop/elementalvial.png" class="icon" title="Elemental Vial"></th>
+  <th><img src="img/mithril_shop/forgehammer.png" class="icon" title="Forge Hammer"></th>
+  <th><img src="img/mithril_shop/steel.png" class="icon" title="Steel"></th>
+  <th><img src="img/mithril_shop/tier2magicbook.png" class="icon" title="Tier 2 Magic Book"></th>
+  <th><img src="img/mithril_shop/perfectsummoningspell.png" class="icon" title="Perfect Summoning Spell"></th>
+  <th><img src="img/mithril_shop/advancedsummoningspell.png" class="icon" title="Advanced Summoning Spell"></th>
+  <th><img src="img/mithril_shop/fortunepotion.png" class="icon" title="Fortune Potion"></th>
+  <th><img src="img/mithril_shop/strengtheningpotion.png" class="icon" title="Strengthening Potion"></th>
+  <th><img src="img/mithril_shop/lightreagent.png" class="icon" title="Light Reagent"></th>
+  <th><img src="img/mithril_shop/tier3magicbook.png" class="icon" title="Tier 3 Magic Book"></th>
+  <th><img src="img/mithril_shop/tier4magicbook.png" class="icon" title="Tier 4 Magic Book"></th>
+  <th><img src="img/mithril_shop/tier5magicbook.png" class="icon" title="Tier 5 Magic Book"></th>
+</tr>
+
+    <tr>
+  <td class="sidebar">Season 0</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 3</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>---</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 4</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x3</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x3</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 6</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x6</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 7</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x6</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 8</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x6</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 9</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x6</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>---</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 10</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x12</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 11</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x5</td>
+  <td>x5</td>
+  <td>x10</td>
+  <td>x12</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 12</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x29</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 13</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x10</td>
+  <td>x10</td>
+  <td>x25</td>
+  <td>x29</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 14</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x29</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 15</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x29</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>---</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 16</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x58</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 17</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x25</td>
+  <td>x25</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 18</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 19</td>
+  <td>x250</td>
+  <td>x250</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x125</td>
+  <td>x125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x50</td>
+  <td>x50</td>
+  <td>x125</td>
+  <td>x143</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 20</td>
+  <td></td>
+  <td></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td></td>
+  <td></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td></td>
+  <td></td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td></td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 36</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x3125</td>
+  <td>x3125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x6250</td>
+  <td>x6250</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x625</td>
+  <td>x625</td>
+  <td>x15625</td>
+  <td>x17858</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 37</td>
+  <td>x31250</td>
+  <td>x31250</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x6250</td>
+  <td>x6250</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x625</td>
+  <td>x625</td>
+  <td>x15625</td>
+  <td>x17585</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 38</td>
+  <td>x31250</td>
+  <td>x31250</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x6250</td>
+  <td>x6250</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x625</td>
+  <td>x625</td>
+  <td>x15625</td>
+  <td>x17858</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 39</td>
+  <td>x78125</td>
+  <td>x78125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x625</td>
+  <td>x625</td>
+  <td>x15625</td>
+  <td>x17858</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 40</td>
+  <td>x78125</td>
+  <td>x78125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x1250</td>
+  <td>x1250</td>
+  <td>x31250</td>
+  <td>x35715</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 41</td>
+  <td>x78125</td>
+  <td>x78125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x1250</td>
+  <td>x1250</td>
+  <td>x31250</td>
+  <td>x35715</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+<tr>
+  <td class="sidebar">Season 42</td>
+  <td>x78125</td>
+  <td>x78125</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x15625</td>
+  <td>x15625</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x31250</td>
+  <td>x31250</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x2</td>
+  <td>x3125</td>
+  <td>x3125</td>
+  <td>x78125</td>
+  <td>x89286</td>
+  <td>x2</td>
+  <td>x1</td>
+  <td>x1</td>
+  <td>x1</td>
+</tr>
+
+
+
+
+  </table>
+</div>
+
+<script>
+  const menuIcons = document.querySelectorAll('.menu-icon');
+  menuIcons.forEach(icon => {
+    icon.addEventListener('click', () => {
+      menuIcons.forEach(i => i.classList.remove('active'));
+      icon.classList.add('active');
+    });
+  });
+</script>
+
+</body>
+</html>
